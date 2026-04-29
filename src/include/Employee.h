@@ -2,14 +2,21 @@
 #include <string>
 #include <iostream>
 
-struct Employee {
+class Employee {
+private:
     int id;
-    std::string name;
-    double salary;
-    std::string position;
-    
-    Employee() : id(-1), name(""), salary(0.0), position("") {}
+    std::string name, email;
 
-    Employee(int id, std::string name, double salary, std::string position) 
-        : id(id), name(name), salary(salary), position(position) {}
-};
+public:
+    Employee(int id, std::string name, std::string email) 
+        : id(id), name(name), email(email) {}
+
+    void setName(std::string name);
+    void setEmail(std::string email);
+    void setID(int id);
+
+
+    std::string getName();
+    std::string getEmail();
+    int getID();
+};  

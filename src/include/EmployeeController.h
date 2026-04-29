@@ -1,18 +1,22 @@
 #pragma once
-#include "Input.h"
 #include "EmployeeView.h"
-#include "EmployeeModel.h"
+#include "Employee.h"
 
 
 class EmployeeController {
 private:
-    EmployeeModel* model;
-    EmployeeView* view;
+    EmployeeView* ev;
+    Employee* e;
 
 public:
-    void main_loop();
+    EmployeeController(Employee& e, EmployeeView& view);
+    void setEmployeeName(std::string name);
+    void setEmployeeEmail(std::string email);
+    void setEmployeeID(int id);
 
-    void set_model(EmployeeModel& model);
-    void set_view(EmployeeView& view);
+    std::string getEmployeeName();
+    std::string getEmployeeEmail();
+    int getEmployeeID();
 
+    void view();
 };

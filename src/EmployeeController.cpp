@@ -1,45 +1,33 @@
 #include "include/EmployeeController.h"
 
-void EmployeeController::main_loop() {
-    while(true) {
-        
-        view->display_menu();
-
-        const Input& inp = view->prompt_for_input();
-
-        switch (inp.inpt_type)
-        {
-        case inputType::ADD_EMP:
-            model->add_employee(inp.emp);
-            break;
-        
-        case inputType::DELETE_EMP:
-            model->delete_employee(inp.emp.id);
-            break;
-
-        case inputType::SHOW_EMP:
-            view->employee_summary(inp.emp.id);
-            break;
-        
-        case inputType::UPDATE_EMP:
-            model->update_employee(inp.emp);
-            break;
-
-        case inputType::INVALID:
-            view->invalid_input();
-            break;
-        case inputType::EXIT:
-            view->exit();
-            return;
-            break;
-        }
-    }
+void EmployeeController::view() {
+    ev->printEmployeeDetails(*e);
 }
 
-void EmployeeController::set_model(EmployeeModel& model) {
-    this->model= &model;
+EmployeeController::EmployeeController(Employee& e, EmployeeView& view) {
+    this->e = &e;
+    this->ev = &view;
 }
 
-void EmployeeController::set_view(EmployeeView& view) {
-    this->view = &view;
+void EmployeeController::setEmployeeName(std::string name) {
+    e->setName(name);
+}
+
+void EmployeeController::setEmployeeEmail(std::string email) {
+    e->setEmail(email);
+}
+
+void EmployeeController::setEmployeeID(int id) {
+    e->setID(id);
+}
+
+std::string EmployeeController::getEmployeeName() {
+    return e->getName();
+}
+std::string EmployeeController::getEmployeeEmail() {
+    return e->getEmail();
+}
+
+int EmployeeController::getEmployeeID(){
+    return e->getID();
 }

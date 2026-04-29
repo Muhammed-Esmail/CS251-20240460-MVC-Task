@@ -1,18 +1,13 @@
 #include "include/EmployeeController.h"
-#include "include/EmployeeModel.h"
+#include "include/Employee.h"
 #include "include/EmployeeView.h"
 
 int main() {
 
-    EmployeeController controller;
     EmployeeView view;
-    EmployeeModel model;
+    Employee e(0, "Muhammed", "muhammed@gmail.com");
+    
+    EmployeeController controller(e, view);
 
-    controller.set_model(model);
-    view.set_model(model);
-
-    controller.set_view(view);
-    model.set_view(view);
-
-    controller.main_loop();
+    controller.view();
 }
